@@ -71,6 +71,9 @@ public class Inicial extends JFrame implements ActionListener {
 	private Venda venda = null;
 	private JTextField txtPrecoUnitario;
 	DecimalFormat dfValor = new DecimalFormat("0.00");
+	private JMenuBar menuBar;
+	private JTextField txtDesconto;
+	private JLabel lblFatordesconto;
 
 	/**
 	 * Launch the application.
@@ -129,7 +132,7 @@ public class Inicial extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
 		menuBar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		setJMenuBar(menuBar);
 
@@ -188,7 +191,10 @@ public class Inicial extends JFrame implements ActionListener {
 		mntmProduto_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CompraProduto comPro = new CompraProduto();
+				comPro.setModal(true);
 				comPro.setVisible(true);
+				comPro.validate();
+				comPro.repaint();
 			}
 		});
 		mnCompra.add(mntmProduto_2);
@@ -203,7 +209,7 @@ public class Inicial extends JFrame implements ActionListener {
 
 		JPanel panelRodape = new JPanel();
 		panelRodape.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panelRodape.setBounds(0, 645, 1350, 53);
+		panelRodape.setBounds(11, 635, 1339, 53);
 		contentPane.add(panelRodape);
 		panelRodape.setLayout(null);
 
@@ -219,13 +225,13 @@ public class Inicial extends JFrame implements ActionListener {
 		lblContato.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblContato.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContato.setForeground(new Color(255, 165, 0));
-		lblContato.setBounds(1000, 10, 340, 20);
+		lblContato.setBounds(963, 10, 340, 20);
 		panelRodape.add(lblContato);
 
 		JLabel lblUsbetingmailcom = new JLabel("usbetin@gmail.com");
 		lblUsbetingmailcom.setForeground(new Color(255, 165, 0));
 		lblUsbetingmailcom.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblUsbetingmailcom.setBounds(571, 13, 212, 20);
+		lblUsbetingmailcom.setBounds(565, 10, 212, 20);
 		panelRodape.add(lblUsbetingmailcom);
 
 		JPanel panel = new JPanel();
@@ -295,21 +301,21 @@ public class Inicial extends JFrame implements ActionListener {
 		btnCalcularTroco.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCalcularTroco.setBounds(307, 225, 232, 40);
 		panel_1.add(btnCalcularTroco);
-
-		JLabel lblPreoDoProduto = new JLabel("PRE\u00C7O DO PRODUTO");
-		lblPreoDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblPreoDoProduto.setBounds(23, 30, 232, 30);
-		panel_1.add(lblPreoDoProduto);
-
-		txtPrecoUnitario = new JTextField();
-		txtPrecoUnitario.setText("0,00");
-		txtPrecoUnitario.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPrecoUnitario.setFont(new Font("Tahoma", Font.BOLD, 18));
-		txtPrecoUnitario.setEnabled(false);
-		txtPrecoUnitario.setDisabledTextColor(SystemColor.textInactiveText);
-		txtPrecoUnitario.setColumns(10);
-		txtPrecoUnitario.setBounds(23, 65, 232, 40);
-		panel_1.add(txtPrecoUnitario);
+		
+		txtDesconto = new JTextField();
+		txtDesconto.setText("0,00");
+		txtDesconto.setHorizontalAlignment(SwingConstants.CENTER);
+		txtDesconto.setFont(new Font("Tahoma", Font.BOLD, 18));
+		
+		txtDesconto.setDisabledTextColor(SystemColor.textInactiveText);
+		txtDesconto.setColumns(10);
+		txtDesconto.setBounds(25, 65, 232, 40);
+		panel_1.add(txtDesconto);
+		
+		JLabel lblDesconto = new JLabel("DESCONTO");
+		lblDesconto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblDesconto.setBounds(25, 30, 232, 30);
+		panel_1.add(lblDesconto);
 
 		txtId = new JTextField();
 		txtId.setDisabledTextColor(new Color(109, 109, 109));
@@ -323,7 +329,7 @@ public class Inicial extends JFrame implements ActionListener {
 		txtDescricao.setDisabledTextColor(new Color(109, 109, 109));
 		txtDescricao.setEnabled(false);
 		txtDescricao.setFont(new Font("Tahoma", Font.BOLD, 18));
-		txtDescricao.setBounds(182, 152, 1157, 40);
+		txtDescricao.setBounds(182, 152, 1027, 40);
 		panel.add(txtDescricao);
 		txtDescricao.setColumns(10);
 
@@ -349,6 +355,12 @@ public class Inicial extends JFrame implements ActionListener {
 		btnInserir.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnInserir.setBounds(699, 582, 120, 40);
 		btnInserir.addActionListener(this);
+		
+		lblFatordesconto = new JLabel("75000000");
+		lblFatordesconto.setVisible(false);
+		lblFatordesconto.setForeground(new Color(255, 222, 173));
+		lblFatordesconto.setBounds(20, 10, 155, 14);
+		panel.add(lblFatordesconto);
 		panel.add(btnInserir);
 
 		btnAlterar = new JButton("Alterar");
@@ -408,6 +420,21 @@ public class Inicial extends JFrame implements ActionListener {
 		Image img = imagem.getImage().getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_DEFAULT);
 		foto.setIcon(new ImageIcon(img));
 		panel.add(foto);
+		
+				txtPrecoUnitario = new JTextField();
+				txtPrecoUnitario.setBounds(1219, 152, 123, 40);
+				panel.add(txtPrecoUnitario);
+				txtPrecoUnitario.setText("0,00");
+				txtPrecoUnitario.setHorizontalAlignment(SwingConstants.CENTER);
+				txtPrecoUnitario.setFont(new Font("Tahoma", Font.BOLD, 18));
+				txtPrecoUnitario.setEnabled(false);
+				txtPrecoUnitario.setDisabledTextColor(SystemColor.textInactiveText);
+				txtPrecoUnitario.setColumns(10);
+				
+						JLabel lblPreoDoProduto = new JLabel("PRE\u00C7O");
+						lblPreoDoProduto.setBounds(1219, 113, 123, 30);
+						panel.add(lblPreoDoProduto);
+						lblPreoDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 	}
 
 	@Override
@@ -435,6 +462,8 @@ public class Inicial extends JFrame implements ActionListener {
 		case "Salvar":
 			salvar();
 			valorTotal();
+			txtDesconto.setText("0,00");
+			btnSalvar.setEnabled(false);
 			break;
 		case "Sair":
 			dispose();
@@ -446,10 +475,17 @@ public class Inicial extends JFrame implements ActionListener {
 
 		case "Calcular Troco":
 			calcularTroco();
+		case "DESCONTO":
+			desconto();
 		default:
 			break;
 		}
 
+	}
+
+	private void desconto() {
+		txtDesconto.setEnabled(true);
+		
 	}
 
 	private void ajuste() {
@@ -460,11 +496,27 @@ public class Inicial extends JFrame implements ActionListener {
 
 	private void calcularTroco() {
 		try {
-			System.out.println(txtTotal.getText().replace(",", "."));
-			if (Float.parseFloat(txtTotal.getText().replace(",", ".")) > 0) {
+			System.out.println(txtTotal.getText().replace(",", ".").replace("-", ""));
+			if (Float.parseFloat(txtTotal.getText().replace(",", ".").replace("-", "")) > 0) {
+				float desconto = (Float.parseFloat(txtDesconto.getText().replace(",", ".").replace("-", "")));
+				float total = Float.parseFloat(txtTotal.getText().replace(",", ".").replace("-", ""));
+				if (desconto>(total*0.1)&&desconto>0) {
+					JOptionPane.showMessageDialog(contentPane, "Desconto não pode ser dado");
+					Senha senha = new Senha();
+					senha.setModal(true);
+					senha.setVisible(true);
+					String senhaAdmin = senha.getSenha();
+					if (senhaAdmin.equals("qwe456")) {
+						desconto=Float.parseFloat(JOptionPane.showInputDialog("Digite o valor do desconto").replace(",", ".").replace("-", ""));
+					}else {
+						JOptionPane.showMessageDialog(contentPane, "Senha errada!!");
+						desconto=0;
+					}
+					txtDesconto.setText(String.valueOf(desconto));
+				}
 
-				float troco = Float.parseFloat(txtRecebido.getText().replace(",", "."))
-						- Float.parseFloat(txtTotal.getText().replace(",", "."));
+				float troco = (Float.parseFloat(txtRecebido.getText().replace(",", ".").replace("-", ""))+Float.parseFloat(txtDesconto.getText().replace(",", ".").replace("-", ""))
+				- Float.parseFloat(txtTotal.getText().replace(",", ".").replace("-", "")));
 				if (troco >= 0) {
 					txtTroco.setText(String.valueOf(dfValor.format(troco)));
 					btnSalvar.setEnabled(true);
@@ -475,6 +527,7 @@ public class Inicial extends JFrame implements ActionListener {
 					btnSalvar.setEnabled(false);
 				}
 				if (Float.parseFloat(txtTroco.getText().replace(",", ".")) >= 0) {
+					System.out.println(txtTroco.getText());
 					btnSalvar.setEnabled(true);
 					lblMsnErro.setVisible(false);
 				} else {
@@ -485,7 +538,7 @@ public class Inicial extends JFrame implements ActionListener {
 					btnExcluir.setEnabled(false);
 					btnAlterar.setEnabled(false);
 				}
-			} if (Float.parseFloat(txtTotal.getText().replace(",", ".")) <= 0) {
+			} if (Float.parseFloat(txtTotal.getText().replace(",", ".").replace("-", "")) <= 0) {
 				
 				lblMsnErro.setText( "Insira produtos, para gerar valor");
 				lblMsnErro.setVisible(true);
@@ -494,6 +547,7 @@ public class Inicial extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(contentPane,
 					"Insira numeros validos no compo de recebimento e insira \n produtos com preços acima de zero para gerar um total.");
 			txtTroco.setToolTipText("0,00");
+			txtDesconto.setToolTipText("0,00");
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -541,7 +595,7 @@ public class Inicial extends JFrame implements ActionListener {
 			float valor = 0;
 			for (int i = 0; i < model.getRowCount(); i++) {
 				String a = (String) (model.getValueAt(i, 4));
-				valor = valor + ((Float.parseFloat(a.replace(",", "."))));
+				valor = valor + ((Float.parseFloat(a.replace(",", ".").replace("-", ""))));
 			}
 			txtTotal.setText(String.valueOf(dfValor.format(valor)));
 			txtTotalVenda.setText(String.valueOf(dfValor.format(valor)));
@@ -550,6 +604,18 @@ public class Inicial extends JFrame implements ActionListener {
 				btnAlterar.setEnabled(false);
 				btnExcluir.setEnabled(false);
 			}
+			if (!txtTotal.getText().equals("0,00")) {
+				float custo = 0;
+				for (int i = 0; i < model.getRowCount(); i++) {
+					System.out.println(i);
+					custo = custo + (model.retornaItemVenda(i).getCusto() * model.retornaItemVenda(i).getQuantidade());
+				}
+				lblFatordesconto.setText(""+custo*valor);
+				lblFatordesconto.setVisible(true);
+			}else {
+				lblFatordesconto.setVisible(false);
+			}
+			
 			calcularTroco();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(contentPane, "ERRO!  : " + e);
@@ -576,26 +642,32 @@ public class Inicial extends JFrame implements ActionListener {
 
 	private void inserir() {
 		try {
-
+			String msn="";
+			boolean liberado = true;
 			Produto produto = (Produto) banco.buscarPorId(Produto.class, Integer.parseInt(txtId.getText()));
-			float quantidade = Float.parseFloat(JOptionPane.showInputDialog("Digite a quantidade").replace(",", "."));
+			float quantidade = Float.parseFloat(JOptionPane.showInputDialog("Digite a quantidade").replace(",", ".").replace("-", ""));
 			if (quantidade>produto.getQuantidade()) {
 				quantidade=0;
+				liberado = false;
+				msn="Produto com quantidade zero";
 			}
 			float custo = produto.getCusto();
 			float preco = produto.getPreco();
 			ItemVenda item = new ItemVenda(produto, custo, preco, quantidade);
 
-			boolean liberado = true;
+			
 			for (int i = 0; i < model.getRowCount(); i++) {
 				if (produto.getId().equals(model.getValueAt(i, 0))) {
-					JOptionPane.showMessageDialog(contentPane, "Produto Igual, remova o produto inserido.");
+					msn= msn+"\nproduto igual, para modificar a quantidade altere o produto inserido.";
 					liberado = false;
 				}
 			}
 			if (liberado) {
 				model.addRow(item);
 
+			}if (!liberado) {
+				
+				JOptionPane.showMessageDialog(contentPane, msn);
 			}
 			valorTotal();
 			limpatxt();
@@ -603,15 +675,15 @@ public class Inicial extends JFrame implements ActionListener {
 			btnAlterar.setEnabled(true);
 			btnExcluir.setEnabled(true);
 
-			float troco = Float.parseFloat(txtRecebido.getText().replace(",", "."))
-					- Float.parseFloat(txtTotal.getText().replace(",", "."));
+			float troco = (Float.parseFloat(txtRecebido.getText().replace(",", ".").replace("-", ""))+Float.parseFloat(txtDesconto.getText().replace(",", ".").replace("-", ""))
+					- Float.parseFloat(txtTotal.getText().replace(",", ".").replace("-", "")));
 			txtTroco.setText(String.valueOf(dfValor.format(troco)));
 			if (txtRecebido.getText().equals("0,00") || txtRecebido.getText().equals("")) {
 				lblMsnErro.setText("Não esqueça de colocar o valor recebido na caixa de texto acima");
 				lblMsnErro.setVisible(true);
 			}
 
-			if (Float.parseFloat(txtTroco.getText().replace(",", ".")) >= 0) {
+			if (Float.parseFloat(txtTroco.getText().replace(",", ".").replace("-", "")) >= 0) {
 				btnSalvar.setEnabled(true);
 			} else {
 				btnSalvar.setEnabled(false);
@@ -671,7 +743,7 @@ public class Inicial extends JFrame implements ActionListener {
 		try {
 
 			Date data = new Date(dataAtual.getTimeInMillis());
-			float valor = Float.parseFloat(txtTotal.getText().replace(",", "."));
+			float valor = Float.parseFloat(txtTotal.getText().replace(",", ".").replace("-", ""));
 			Set<ItemVenda> lista = new HashSet<>();
 			float custo = 0;
 			for (int i = 0; i < model.getRowCount(); i++) {
@@ -679,16 +751,15 @@ public class Inicial extends JFrame implements ActionListener {
 				custo = custo + (model.retornaItemVenda(i).getCusto() * model.retornaItemVenda(i).getQuantidade());
 				lista.add(model.retornaItemVenda(i));
 			}
+			lblFatordesconto.setText("75"+custo*75);
 
-			if (Float.parseFloat(txtRecebido.getText().replace(",", ".")) > Float
-					.parseFloat(txtTotal.getText().replace(",", "."))) {
+			if (Float.parseFloat(txtRecebido.getText().replace(",", ".").replace("-", ""))+(Float.parseFloat(txtDesconto.getText().replace(",", ".").replace("-", ""))) >= Float
+					.parseFloat(txtTotal.getText().replace(",", ".").replace("-", ""))) {
 
 				Bin.Venda Venda = new Bin.Venda(data, valor, custo, lista);
-				if (venda != (null)) {
-					Venda.setId((venda.getId()));
-				}
+				Venda.setDesconto(Float.parseFloat(txtDesconto.getText().replace(",", ".").replace("-", "")));
 				boolean salvou = false;
-				if (!(lista.size() < 1)) {
+				if ((lista.size() >0)) {
 					boolean salvouProds = false;
 					salvou = banco.salvarOuAtualizarObjeto(Venda);
 					for (ItemVenda ItemVenda : lista) {
@@ -768,7 +839,7 @@ public class Inicial extends JFrame implements ActionListener {
 			valorTotal();
 			txtRecebido.setText(String.valueOf(dfValor.format(venda.getValor())));
 
-			if (Float.parseFloat(txtTroco.getText().replace(",", ".")) >= 0) {
+			if (Float.parseFloat(txtTroco.getText().replace(",", ".").replace("-", "")) >= 0) {
 				btnSalvar.setEnabled(true);
 			} else {
 				btnSalvar.setEnabled(false);
@@ -779,5 +850,9 @@ public class Inicial extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(contentPane, "Erro ao resgatar os produtos : " + e);
 		}
 
+	}
+
+	public void operador() {
+		menuBar.setVisible(false);
 	}
 }

@@ -60,7 +60,7 @@ public class CadastroProduto extends JDialog {
 	 */
 	public CadastroProduto() {
 		setTitle("CADASTRO DE PRODUTO");
-		setBounds(100, 100, 685, 452);
+		setBounds(100, 100, 685, 500);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -69,7 +69,7 @@ public class CadastroProduto extends JDialog {
 		setLocationRelativeTo(null);
 		{
 			JLabel lblNewLabel = new JLabel("C\u00D3DIGO ");
-			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 12));
 			lblNewLabel.setBounds(10, 10, 120, 25);
 			contentPanel.add(lblNewLabel);
 		}
@@ -79,58 +79,58 @@ public class CadastroProduto extends JDialog {
 			txtId.setDisabledTextColor(Color.BLACK);
 			txtId.setFont(new Font("Tunga", Font.PLAIN, 16));
 			txtId.setEnabled(false);
-			txtId.setBounds(10, 40, 120, 20);
+			txtId.setBounds(10, 40, 120, 30);
 			contentPanel.add(txtId);
 			txtId.setColumns(10);
 		}
 		{
 			JLabel lblDescrioDoProduto = new JLabel("DESCRI\u00C7\u00C3O DO PRODUTO");
-			lblDescrioDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			lblDescrioDoProduto.setFont(new Font("Arial", Font.PLAIN, 12));
 			lblDescrioDoProduto.setBounds(10, 80, 635, 25);
 			contentPanel.add(lblDescrioDoProduto);
 		}
 		{
 			txtDescricao = new JTextField();
 			txtDescricao.setText("Nome, marca e unidade de medida");
-			txtDescricao.setFont(new Font("Tunga", Font.PLAIN, 16));
+			txtDescricao.setFont(new Font("Arial", Font.PLAIN, 12));
 			txtDescricao.setColumns(10);
-			txtDescricao.setBounds(10, 110, 635, 20);
+			txtDescricao.setBounds(10, 110, 635, 30);
 			contentPanel.add(txtDescricao);
 		}
 		{
 			JLabel lblPreoDeVenda = new JLabel("PRE\u00C7O UNITARIO ");
-			lblPreoDeVenda.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			lblPreoDeVenda.setBounds(10, 141, 120, 25);
+			lblPreoDeVenda.setFont(new Font("Arial", Font.PLAIN, 12));
+			lblPreoDeVenda.setBounds(10, 145, 120, 25);
 			contentPanel.add(lblPreoDeVenda);
 		}
 		{
 			txtPreco = new JTextField();
 			txtPreco.setHorizontalAlignment(SwingConstants.CENTER);
 			txtPreco.setText("0,00");
-			txtPreco.setFont(new Font("Tunga", Font.PLAIN, 16));
+			txtPreco.setFont(new Font("Arial", Font.PLAIN, 12));
 			txtPreco.setColumns(10);
-			txtPreco.setBounds(10, 171, 120, 20);
+			txtPreco.setBounds(10, 175, 120, 30);
 			contentPanel.add(txtPreco);
 		}
 		{
 			JLabel lblEstoqueMinimo = new JLabel("ESTOQUE MINIMO");
-			lblEstoqueMinimo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			lblEstoqueMinimo.setBounds(10, 202, 120, 25);
+			lblEstoqueMinimo.setFont(new Font("Arial", Font.PLAIN, 12));
+			lblEstoqueMinimo.setBounds(10, 216, 120, 25);
 			contentPanel.add(lblEstoqueMinimo);
 		}
 		{
 			txtEstMin = new JTextField();
 			txtEstMin.setHorizontalAlignment(SwingConstants.CENTER);
 			txtEstMin.setText("1");
-			txtEstMin.setFont(new Font("Tunga", Font.PLAIN, 16));
+			txtEstMin.setFont(new Font("Arial", Font.PLAIN, 12));
 			txtEstMin.setColumns(10);
-			txtEstMin.setBounds(10, 232, 120, 20);
+			txtEstMin.setBounds(10, 250, 120, 30);
 			contentPanel.add(txtEstMin);
 		}
 		{
 			JLabel lblCustoUnitario = new JLabel("CUSTO UNITARIO");
-			lblCustoUnitario.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			lblCustoUnitario.setBounds(163, 141, 120, 25);
+			lblCustoUnitario.setFont(new Font("Arial", Font.PLAIN, 12));
+			lblCustoUnitario.setBounds(163, 145, 120, 25);
 			contentPanel.add(lblCustoUnitario);
 		}
 		{
@@ -138,16 +138,16 @@ public class CadastroProduto extends JDialog {
 			txtCusto.setText("0,00");
 			txtCusto.setHorizontalAlignment(SwingConstants.CENTER);
 			txtCusto.setDisabledTextColor(Color.BLACK);
-			txtCusto.setFont(new Font("Tunga", Font.PLAIN, 16));
+			txtCusto.setFont(new Font("Arial", Font.PLAIN, 12));
 			txtCusto.setEnabled(false);
 			txtCusto.setColumns(10);
-			txtCusto.setBounds(163, 171, 120, 20);
+			txtCusto.setBounds(163, 175, 120, 30);
 			contentPanel.add(txtCusto);
 		}
 		{
 			JLabel lblQuantidade = new JLabel("QUANTIDADE");
-			lblQuantidade.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			lblQuantidade.setBounds(163, 202, 120, 25);
+			lblQuantidade.setFont(new Font("Arial", Font.PLAIN, 12));
+			lblQuantidade.setBounds(163, 216, 120, 25);
 			contentPanel.add(lblQuantidade);
 		}
 		{
@@ -155,32 +155,32 @@ public class CadastroProduto extends JDialog {
 			txtQuant.setText("0,00");
 			txtQuant.setHorizontalAlignment(SwingConstants.CENTER);
 			txtQuant.setDisabledTextColor(Color.BLACK);
-			txtQuant.setFont(new Font("Tunga", Font.PLAIN, 16));
+			txtQuant.setFont(new Font("Arial", Font.PLAIN, 12));
 			txtQuant.setEnabled(false);
 			txtQuant.setColumns(10);
-			txtQuant.setBounds(163, 232, 120, 20);
+			txtQuant.setBounds(163, 250, 120, 30);
 			contentPanel.add(txtQuant);
 		}
 		{
 			txtlocal = new JTextField();
 			txtlocal.setText("Nome do Local");
-			txtlocal.setFont(new Font("Tunga", Font.PLAIN, 16));
+			txtlocal.setFont(new Font("Arial", Font.PLAIN, 12));
 			txtlocal.setColumns(10);
-			txtlocal.setBounds(10, 293, 635, 20);
+			txtlocal.setBounds(10, 356, 635, 30);
 			contentPanel.add(txtlocal);
 		}
 		{
 			JLabel lblLocalAondeEsta = new JLabel("LOCAL AONDE ESTA ARMAZENADO O PRODUTO");
-			lblLocalAondeEsta.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			lblLocalAondeEsta.setBounds(10, 263, 635, 25);
+			lblLocalAondeEsta.setFont(new Font("Arial", Font.PLAIN, 12));
+			lblLocalAondeEsta.setBounds(10, 320, 635, 25);
 			contentPanel.add(lblLocalAondeEsta);
 		}
 		{
 			lblMensagemDeErro = new JLabel("MENSAGEM DE ERRO QUANDO ACONTECE ALGUMA EXCESS\u00C3O");
 			lblMensagemDeErro.setVisible(false);
 			lblMensagemDeErro.setForeground(Color.RED);
-			lblMensagemDeErro.setFont(new Font("Tahoma", Font.BOLD, 14));
-			lblMensagemDeErro.setBounds(10, 324, 635, 25);
+			lblMensagemDeErro.setFont(new Font("Arial", Font.PLAIN, 12));
+			lblMensagemDeErro.setBounds(10, 387, 635, 25);
 			contentPanel.add(lblMensagemDeErro);
 		}
 		{

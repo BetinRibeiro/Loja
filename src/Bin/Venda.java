@@ -21,6 +21,7 @@ public class Venda {
 	private Integer id;
 	private Date data;
 	private float valor;
+	private float desconto;
 	private float custo;
 	@OneToMany(mappedBy = "venda", fetch = FetchType.EAGER)
 	private Set<ItemVenda> lista;
@@ -84,6 +85,14 @@ public class Venda {
 
 	public Venda() {
 		super();
+	}
+
+	public float getDesconto() {
+		return desconto;
+	}
+
+	public void setDesconto(float desconto) {
+		this.desconto = desconto;
 	}
 
 }

@@ -173,9 +173,12 @@ public class ConsultaEstoque extends JDialog implements ActionListener {
 		Produto produto = (Produto) banco.buscarPorId(Produto.class,
 				(Integer) table.getValueAt(table.getSelectedRow(), 0));
 		AjustaEstoque c = new AjustaEstoque();
+		c.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		c.inseirProduto(produto);
 		c.setModal(true);
 		c.setVisible(true);
+		c.validate();
+		c.repaint();
 		buscar();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(contentPanel, "Erro ao ajustar produto");

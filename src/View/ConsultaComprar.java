@@ -28,6 +28,7 @@ import com.toedter.calendar.JDateChooser;
 import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.Color;
 
 public class ConsultaComprar extends JDialog implements ActionListener {
 
@@ -93,12 +94,15 @@ public class ConsultaComprar extends JDialog implements ActionListener {
 			}
 			{
 				txtTotal = new JTextField();
+				txtTotal.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				txtTotal.setDisabledTextColor(Color.DARK_GRAY);
 				txtTotal.setEnabled(false);
 				txtTotal.setColumns(10);
 				buttonPane.add(txtTotal);
 			}
 			{
 				data = new JDateChooser(new Date());
+				data.setAutoscrolls(true);
 				data.getCalendarButton().setFont(new Font("Tahoma", Font.PLAIN, 14));
 				buttonPane.add(data);
 			}

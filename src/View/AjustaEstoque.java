@@ -38,7 +38,8 @@ public class AjustaEstoque extends JDialog {
 	private JTextField txtEstMin;
 	private JLabel lblEstoqueMinimo;
 	private Dao banco = new Dao();
-	private JLabel lblMsnErr;DecimalFormat dfValor = new DecimalFormat("0.00");
+	private JLabel lblMsnErr;
+	DecimalFormat dfValor = new DecimalFormat("0.00");
 
 	/**
 	 * Launch the application.
@@ -63,6 +64,8 @@ public class AjustaEstoque extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		setAlwaysOnTop(true);
+		setLocationRelativeTo(null);
 
 		txtid = new JTextField();
 		txtid.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -147,7 +150,7 @@ public class AjustaEstoque extends JDialog {
 		lblEstoqueMinimo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblEstoqueMinimo.setBounds(295, 95, 130, 20);
 		contentPanel.add(lblEstoqueMinimo);
-		
+
 		lblMsnErr = new JLabel("msn err");
 		lblMsnErr.setVisible(false);
 		lblMsnErr.setForeground(Color.RED);
@@ -182,6 +185,7 @@ public class AjustaEstoque extends JDialog {
 				buttonPane.add(btnCancelar);
 			}
 		}
+		validate();
 	}
 
 	private void salvar() {
@@ -190,24 +194,26 @@ public class AjustaEstoque extends JDialog {
 			Integer id = Integer.valueOf(txtid.getText());
 			String descricao = txtDescricao.getText();
 			float custo = Float.valueOf(txtCusto.getText().replace(",", "."));
-			if (custo<=0) {
+			if (custo <= 0) {
 				JOptionPane.showMessageDialog(contentPanel, "Seu custo não pode ser menor que zero!");
-				custo=0;
+				custo = 0;
 			}
-			
+
 			float quantidade = Float.valueOf(txtQuant.getText().replace(",", "."));
-			if (quantidade<=0) {
-				JOptionPane.showMessageDialog(contentPanel, "Quando sua quantidade é igual ou manor que zero seu custo é zero!");
-				quantidade=0;
-				custo=0;
+			if (quantidade <= 0) {
+				JOptionPane.showMessageDialog(contentPanel,
+						"Quando sua quantidade é igual ou manor que zero seu custo é zero!");
+				quantidade = 0;
+				custo = 0;
 			}
 			float preco = Float.valueOf(txtPreco.getText().replace(",", "."));
 			float estMin = Float.valueOf(txtEstMin.getText().replace(",", "."));
 			String local = txtLocal.getText();
-			if (preco<custo) {
+			if (preco < custo) {
 				setVisible(true);
-				JOptionPane.showMessageDialog(contentPanel, "Seu preço é menor que o custo do produto!!\n colocaremos 10% de lucro por dentro para não ter prejuiso");
-				preco=(float) (custo/0.9);
+				JOptionPane.showMessageDialog(contentPanel,
+						"Seu preço é menor que o custo do produto!!\n colocaremos 10% de lucro por dentro para não ter prejuiso");
+				preco = (float) (custo / 0.9);
 			}
 			Produto produto = new Produto(id, descricao, custo, quantidade, preco, estMin, local);
 
@@ -227,11 +233,12 @@ public class AjustaEstoque extends JDialog {
 					dispose();
 
 				}
-			}} catch (java.lang.NumberFormatException e) {
-				lblMsnErr.setText("Insira numeros válidos nos campos numericos");
-				lblMsnErr.setVisible(true);
+			}
+		} catch (java.lang.NumberFormatException e) {
+			lblMsnErr.setText("Insira numeros válidos nos campos numericos");
+			lblMsnErr.setVisible(true);
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(contentPanel, "Erro ao alterar o produto!:" +e);
+			JOptionPane.showMessageDialog(contentPanel, "Erro ao alterar o produto!:" + e);
 		}
 	}
 
