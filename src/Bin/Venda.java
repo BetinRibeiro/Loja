@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "venda")
-public class Venda {
+public class Venda implements Comparable<Venda> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")
@@ -23,7 +23,7 @@ public class Venda {
 	private float valor;
 	private float desconto;
 	private float custo;
-	@OneToMany(mappedBy = "venda", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "venda", fetch = FetchType.LAZY)
 	private Set<ItemVenda> lista;
 
 	public Integer getId() {
@@ -93,6 +93,12 @@ public class Venda {
 
 	public void setDesconto(float desconto) {
 		this.desconto = desconto;
+	}
+
+	@Override
+	public int compareTo(Venda o) {
+		// TODO Auto-generated method stub
+		return Integer.compare(o.getId(), getId());
 	}
 
 }

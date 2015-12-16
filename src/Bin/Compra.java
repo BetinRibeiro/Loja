@@ -13,14 +13,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name = "compra")
-public class Compra {
+public class Compra implements Comparable<Compra>{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")
 	private Integer id;
 	private Date data;
 	private float total;
-	@OneToMany(mappedBy = "compra", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "compra", fetch=FetchType.LAZY)
 	private Set<ItemCompra> lista;
 	public Integer getId() {
 		return id;
@@ -61,6 +61,11 @@ public class Compra {
 	}
 	public Compra() {
 		super();
+	}
+	@Override
+	public int compareTo(Compra o) {
+		// TODO Auto-generated method stub
+		return Integer.compare(o.getId(), getId());
 	}
 	
 	
